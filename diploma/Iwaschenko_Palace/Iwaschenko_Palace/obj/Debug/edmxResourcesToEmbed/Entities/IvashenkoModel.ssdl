@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Iwaschenko_PalaceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="IdDepartments" />
+    </Key>
+    <Property Name="IdDepartments" Type="int" Nullable="false" />
+    <Property Name="Title" Type="text" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="IdEvent" />
+    </Key>
+    <Property Name="IdEvent" Type="int" Nullable="false" />
+    <Property Name="IdWorkers" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Title" Type="text" />
+  </EntityType>
+  <EntityType Name="Movemente">
+    <Key>
+      <PropertyRef Name="IdMovemente" />
+    </Key>
+    <Property Name="IdMovemente" Type="int" Nullable="false" />
+    <Property Name="Title" Type="text" />
+  </EntityType>
+  <EntityType Name="Participation">
+    <Key>
+      <PropertyRef Name="IdParticipation" />
+    </Key>
+    <Property Name="IdParticipation" Type="int" Nullable="false" />
+    <Property Name="IdEvent" Type="int" />
+  </EntityType>
+  <EntityType Name="Photo">
+    <Key>
+      <PropertyRef Name="IdPhoto" />
+    </Key>
+    <Property Name="IdPhoto" Type="int" Nullable="false" />
+    <Property Name="IdEvent" Type="int" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="IdPosition" />
+    </Key>
+    <Property Name="IdPosition" Type="int" Nullable="false" />
+    <Property Name="Title" Type="text" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="IdRole" />
+    </Key>
+    <Property Name="IdRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Tittle" Type="text" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="text" />
+    <Property Name="Surname" Type="text" />
+    <Property Name="Patronymic" Type="text" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="date" />
+    <Property Name="IdRole" Type="nvarchar" MaxLength="50" />
+    <Property Name="Education" Type="text" />
+    <Property Name="Address" Type="int" />
+  </EntityType>
+  <EntityType Name="Volunteer">
+    <Key>
+      <PropertyRef Name="IdVolunteer" />
+    </Key>
+    <Property Name="IdVolunteer" Type="int" Nullable="false" />
+    <Property Name="IdMovement" Type="int" />
+    <Property Name="IdParticipation" Type="int" />
+    <Property Name="IdUsers" Type="int" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="IdWorkers" />
+    </Key>
+    <Property Name="IdWorkers" Type="int" Nullable="false" />
+    <Property Name="IdDepartment" Type="int" />
+    <Property Name="IdPosition" Type="int" />
+    <Property Name="IdMovemente" Type="int" />
+    <Property Name="IdUsers" Type="int" />
+  </EntityType>
+  <Association Name="FK_Event_Worker">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="IdWorkers" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="IdWorkers" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Participation_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="Participation" Type="Self.Participation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="IdEvent" />
+      </Principal>
+      <Dependent Role="Participation">
+        <PropertyRef Name="IdEvent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Photo_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="IdEvent" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="IdEvent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role1">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="IdRole" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_Movemente">
+    <End Role="Movemente" Type="Self.Movemente" Multiplicity="0..1" />
+    <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movemente">
+        <PropertyRef Name="IdMovemente" />
+      </Principal>
+      <Dependent Role="Volunteer">
+        <PropertyRef Name="IdMovement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_Participation">
+    <End Role="Participation" Type="Self.Participation" Multiplicity="0..1" />
+    <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participation">
+        <PropertyRef Name="IdParticipation" />
+      </Principal>
+      <Dependent Role="Volunteer">
+        <PropertyRef Name="IdParticipation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Volunteer">
+        <PropertyRef Name="IdUsers" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Worker_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="IdDepartments" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="IdDepartment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Worker_Movemente">
+    <End Role="Movemente" Type="Self.Movemente" Multiplicity="0..1" />
+    <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movemente">
+        <PropertyRef Name="IdMovemente" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="IdMovemente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Worker_Position">
+    <End Role="Position" Type="Self.Position" Multiplicity="0..1" />
+    <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="IdPosition" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="IdPosition" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Worker_User1">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="IdUsers" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Iwaschenko_PalaceModelStoreContainer">
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Movemente" EntityType="Self.Movemente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participation" EntityType="Self.Participation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Photo" EntityType="Self.Photo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Event_Worker" Association="Self.FK_Event_Worker">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Participation_Event" Association="Self.FK_Participation_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="Participation" EntitySet="Participation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Photo_Event" Association="Self.FK_Photo_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="Photo" EntitySet="Photo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role1" Association="Self.FK_User_Role1">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_Movemente" Association="Self.FK_Volunteer_Movemente">
+      <End Role="Movemente" EntitySet="Movemente" />
+      <End Role="Volunteer" EntitySet="Volunteer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_Participation" Association="Self.FK_Volunteer_Participation">
+      <End Role="Participation" EntitySet="Participation" />
+      <End Role="Volunteer" EntitySet="Volunteer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_User" Association="Self.FK_Volunteer_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Volunteer" EntitySet="Volunteer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Worker_Department" Association="Self.FK_Worker_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Worker" EntitySet="Worker" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Worker_Movemente" Association="Self.FK_Worker_Movemente">
+      <End Role="Movemente" EntitySet="Movemente" />
+      <End Role="Worker" EntitySet="Worker" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Worker_Position" Association="Self.FK_Worker_Position">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Worker" EntitySet="Worker" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Worker_User1" Association="Self.FK_Worker_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="Worker" EntitySet="Worker" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

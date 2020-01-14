@@ -1,0 +1,24 @@
+﻿<Window x:Class="Iwaschenko_Palace.Window.AddWorker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Iwaschenko_Palace.Window"
+        xmlns:props ="clr-namespace:Iwaschenko_Palace"
+        mc:Ignorable="d"
+        Title="AddWorker" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{x:Static props:Resources.TextBoxIdWorkers}" Style="{StaticResource CommonBlock}"></TextBlock>
+                <TextBox x:Name="TextBoxIdWorkers"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{x:Static props:Resources.TextBoxIdDepartment}" Style="{StaticResource CommonBlock}">
+                    <TextBox x:Name="TextBoxIdDepartment"></TextBox>
+                </TextBlock>
+            </StackPanel>    
+            
+        </StackPanel>
+    </Grid>
+</Window>

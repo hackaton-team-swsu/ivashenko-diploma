@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5da370a5f86b4eb4b3bf81c12b231434" Name="Diagram1">
+        <EntityTypeShape EntityType="Iwaschenko_PalaceModel.Department" Width="1.5" PointX="3.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Iwaschenko_PalaceModel.Event" Width="1.5" PointX="8.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Iwaschenko_PalaceModel.Movemente" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Iwaschenko_PalaceModel.Participation" Width="1.5" PointX="10.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Iwaschenko_PalaceModel.Photo" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Iwaschenko_PalaceModel.Position" Width="1.5" PointX="3.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Iwaschenko_PalaceModel.Role" Width="1.5" PointX="1.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Iwaschenko_PalaceModel.User" Width="1.5" PointX="3.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Iwaschenko_PalaceModel.Volunteer" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Iwaschenko_PalaceModel.Worker" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="Iwaschenko_PalaceModel.FK_Worker_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="Iwaschenko_PalaceModel.FK_Event_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="Iwaschenko_PalaceModel.FK_Participation_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="Iwaschenko_PalaceModel.FK_Photo_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="Iwaschenko_PalaceModel.FK_Volunteer_Movemente" ManuallyRouted="false" />
+        <AssociationConnector Association="Iwaschenko_PalaceModel.FK_Worker_Movemente" ManuallyRouted="false" />
+        <AssociationConnector Association="Iwaschenko_PalaceModel.FK_Volunteer_Participation" ManuallyRouted="false" />
+        <AssociationConnector Association="Iwaschenko_PalaceModel.FK_Worker_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="Iwaschenko_PalaceModel.FK_User_Role1" ManuallyRouted="false" />
+        <AssociationConnector Association="Iwaschenko_PalaceModel.FK_Volunteer_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Iwaschenko_PalaceModel.FK_Worker_User1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

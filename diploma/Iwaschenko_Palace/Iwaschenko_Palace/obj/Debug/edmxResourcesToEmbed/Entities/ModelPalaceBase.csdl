@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Iwaschenko_PalaceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Iwaschenko_PalaceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Authorization" EntityType="Iwaschenko_PalaceModel.Authorization" />
+    <EntitySet Name="Department" EntityType="Iwaschenko_PalaceModel.Department" />
+    <EntitySet Name="Education" EntityType="Iwaschenko_PalaceModel.Education" />
+    <EntitySet Name="Event" EntityType="Iwaschenko_PalaceModel.Event" />
+    <EntitySet Name="Movemente" EntityType="Iwaschenko_PalaceModel.Movemente" />
+    <EntitySet Name="Photo" EntityType="Iwaschenko_PalaceModel.Photo" />
+    <EntitySet Name="Position" EntityType="Iwaschenko_PalaceModel.Position" />
+    <EntitySet Name="Role" EntityType="Iwaschenko_PalaceModel.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Iwaschenko_PalaceModel.sysdiagrams" />
+    <EntitySet Name="User" EntityType="Iwaschenko_PalaceModel.User" />
+    <EntitySet Name="Volunteer" EntityType="Iwaschenko_PalaceModel.Volunteer" />
+    <EntitySet Name="Worker" EntityType="Iwaschenko_PalaceModel.Worker" />
+    <AssociationSet Name="FK_User_Authorization" Association="Iwaschenko_PalaceModel.FK_User_Authorization">
+      <End Role="Authorization" EntitySet="Authorization" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Worker_Department" Association="Iwaschenko_PalaceModel.FK_Worker_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Worker" EntitySet="Worker" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Education" Association="Iwaschenko_PalaceModel.FK_User_Education">
+      <End Role="Education" EntitySet="Education" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_Worker" Association="Iwaschenko_PalaceModel.FK_Event_Worker">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Photo_Event" Association="Iwaschenko_PalaceModel.FK_Photo_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="Photo" EntitySet="Photo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Movemente" Association="Iwaschenko_PalaceModel.FK_User_Movemente">
+      <End Role="Movemente" EntitySet="Movemente" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Worker_Position" Association="Iwaschenko_PalaceModel.FK_Worker_Position">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Worker" EntitySet="Worker" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Iwaschenko_PalaceModel.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_User" Association="Iwaschenko_PalaceModel.FK_Volunteer_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Volunteer" EntitySet="Volunteer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Worker_User" Association="Iwaschenko_PalaceModel.FK_Worker_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Worker" EntitySet="Worker" />
+    </AssociationSet>
+    <AssociationSet Name="Participation" Association="Iwaschenko_PalaceModel.Participation">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="Volunteer" EntitySet="Volunteer" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Authorization">
+    <Key>
+      <PropertyRef Name="IdAuthorization" />
+    </Key>
+    <Property Name="IdAuthorization" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Iwaschenko_PalaceModel.FK_User_Authorization" FromRole="Authorization" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="IdDepartments" />
+    </Key>
+    <Property Name="IdDepartments" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Worker" Relationship="Iwaschenko_PalaceModel.FK_Worker_Department" FromRole="Department" ToRole="Worker" />
+  </EntityType>
+  <EntityType Name="Education">
+    <Key>
+      <PropertyRef Name="IdEducation" />
+    </Key>
+    <Property Name="IdEducation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tittle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Adress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="User" Relationship="Iwaschenko_PalaceModel.FK_User_Education" FromRole="Education" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="IdEvent" />
+    </Key>
+    <Property Name="IdEvent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdWorkers" Type="Int32" Nullable="false" />
+    <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Worker" Relationship="Iwaschenko_PalaceModel.FK_Event_Worker" FromRole="Event" ToRole="Worker" />
+    <NavigationProperty Name="Photo" Relationship="Iwaschenko_PalaceModel.FK_Photo_Event" FromRole="Event" ToRole="Photo" />
+    <NavigationProperty Name="Volunteer" Relationship="Iwaschenko_PalaceModel.Participation" FromRole="Event" ToRole="Volunteer" />
+  </EntityType>
+  <EntityType Name="Movemente">
+    <Key>
+      <PropertyRef Name="IdMovemente" />
+    </Key>
+    <Property Name="IdMovemente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Iwaschenko_PalaceModel.FK_User_Movemente" FromRole="Movemente" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Photo">
+    <Key>
+      <PropertyRef Name="IdPhoto" />
+    </Key>
+    <Property Name="IdPhoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEvent" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="Iwaschenko_PalaceModel.FK_Photo_Event" FromRole="Photo" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="IdPosition" />
+    </Key>
+    <Property Name="IdPosition" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Worker" Relationship="Iwaschenko_PalaceModel.FK_Worker_Position" FromRole="Position" ToRole="Worker" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="IdRole" />
+    </Key>
+    <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tittle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Iwaschenko_PalaceModel.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdRole" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdEducation" Type="Int32" Nullable="false" />
+    <Property Name="IdAuthorization" Type="Int32" Nullable="false" />
+    <Property Name="IdMovement" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Authorization" Relationship="Iwaschenko_PalaceModel.FK_User_Authorization" FromRole="User" ToRole="Authorization" />
+    <NavigationProperty Name="Education" Relationship="Iwaschenko_PalaceModel.FK_User_Education" FromRole="User" ToRole="Education" />
+    <NavigationProperty Name="Movemente" Relationship="Iwaschenko_PalaceModel.FK_User_Movemente" FromRole="User" ToRole="Movemente" />
+    <NavigationProperty Name="Role" Relationship="Iwaschenko_PalaceModel.FK_User_Role" FromRole="User" ToRole="Role" />
+    <NavigationProperty Name="Volunteer" Relationship="Iwaschenko_PalaceModel.FK_Volunteer_User" FromRole="User" ToRole="Volunteer" />
+    <NavigationProperty Name="Worker" Relationship="Iwaschenko_PalaceModel.FK_Worker_User" FromRole="User" ToRole="Worker" />
+  </EntityType>
+  <EntityType Name="Volunteer">
+    <Key>
+      <PropertyRef Name="IdVolunteer" />
+    </Key>
+    <Property Name="IdVolunteer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="User" Relationship="Iwaschenko_PalaceModel.FK_Volunteer_User" FromRole="Volunteer" ToRole="User" />
+    <NavigationProperty Name="Event" Relationship="Iwaschenko_PalaceModel.Participation" FromRole="Volunteer" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="IdWorkers" />
+    </Key>
+    <Property Name="IdWorkers" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDepartment" Type="Int32" Nullable="false" />
+    <Property Name="IdPosition" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Department" Relationship="Iwaschenko_PalaceModel.FK_Worker_Department" FromRole="Worker" ToRole="Department" />
+    <NavigationProperty Name="Event" Relationship="Iwaschenko_PalaceModel.FK_Event_Worker" FromRole="Worker" ToRole="Event" />
+    <NavigationProperty Name="Position" Relationship="Iwaschenko_PalaceModel.FK_Worker_Position" FromRole="Worker" ToRole="Position" />
+    <NavigationProperty Name="User" Relationship="Iwaschenko_PalaceModel.FK_Worker_User" FromRole="Worker" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_User_Authorization">
+    <End Type="Iwaschenko_PalaceModel.Authorization" Role="Authorization" Multiplicity="1" />
+    <End Type="Iwaschenko_PalaceModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authorization">
+        <PropertyRef Name="IdAuthorization" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdAuthorization" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Worker_Department">
+    <End Type="Iwaschenko_PalaceModel.Department" Role="Department" Multiplicity="1" />
+    <End Type="Iwaschenko_PalaceModel.Worker" Role="Worker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="IdDepartments" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="IdDepartment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Education">
+    <End Type="Iwaschenko_PalaceModel.Education" Role="Education" Multiplicity="1" />
+    <End Type="Iwaschenko_PalaceModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Education">
+        <PropertyRef Name="IdEducation" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdEducation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_Worker">
+    <End Type="Iwaschenko_PalaceModel.Worker" Role="Worker" Multiplicity="1" />
+    <End Type="Iwaschenko_PalaceModel.Event" Role="Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="IdWorkers" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="IdWorkers" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Photo_Event">
+    <End Type="Iwaschenko_PalaceModel.Event" Role="Event" Multiplicity="1" />
+    <End Type="Iwaschenko_PalaceModel.Photo" Role="Photo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="IdEvent" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="IdEvent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Movemente">
+    <End Type="Iwaschenko_PalaceModel.Movemente" Role="Movemente" Multiplicity="1" />
+    <End Type="Iwaschenko_PalaceModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Movemente">
+        <PropertyRef Name="IdMovemente" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdMovement" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Worker_Position">
+    <End Type="Iwaschenko_PalaceModel.Position" Role="Position" Multiplicity="1" />
+    <End Type="Iwaschenko_PalaceModel.Worker" Role="Worker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="IdPosition" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="IdPosition" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Type="Iwaschenko_PalaceModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="Iwaschenko_PalaceModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="IdRole" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_User">
+    <End Type="Iwaschenko_PalaceModel.User" Role="User" Multiplicity="1" />
+    <End Type="Iwaschenko_PalaceModel.Volunteer" Role="Volunteer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Volunteer">
+        <PropertyRef Name="IdVolunteer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Worker_User">
+    <End Type="Iwaschenko_PalaceModel.User" Role="User" Multiplicity="1" />
+    <End Type="Iwaschenko_PalaceModel.Worker" Role="Worker" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="IdWorkers" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Participation">
+    <End Type="Iwaschenko_PalaceModel.Event" Role="Event" Multiplicity="*" />
+    <End Type="Iwaschenko_PalaceModel.Volunteer" Role="Volunteer" Multiplicity="*" />
+  </Association>
+</Schema>

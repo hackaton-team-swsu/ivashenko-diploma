@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Iwaschenko_PalaceModelStoreContainer" CdmEntityContainer="Iwaschenko_PalaceEntities1">
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="Iwaschenko_PalaceModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="IdDepartments" ColumnName="IdDepartments" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="Iwaschenko_PalaceModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="IdEvent" ColumnName="IdEvent" />
+          <ScalarProperty Name="IdWorkers" ColumnName="IdWorkers" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Movementes">
+      <EntityTypeMapping TypeName="Iwaschenko_PalaceModel.Movemente">
+        <MappingFragment StoreEntitySet="Movemente">
+          <ScalarProperty Name="IdMovemente" ColumnName="IdMovemente" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participations">
+      <EntityTypeMapping TypeName="Iwaschenko_PalaceModel.Participation">
+        <MappingFragment StoreEntitySet="Participation">
+          <ScalarProperty Name="IdParticipation" ColumnName="IdParticipation" />
+          <ScalarProperty Name="IdEvent" ColumnName="IdEvent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Photos">
+      <EntityTypeMapping TypeName="Iwaschenko_PalaceModel.Photo">
+        <MappingFragment StoreEntitySet="Photo">
+          <ScalarProperty Name="IdPhoto" ColumnName="IdPhoto" />
+          <ScalarProperty Name="IdEvent" ColumnName="IdEvent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="Iwaschenko_PalaceModel.Position">
+        <MappingFragment StoreEntitySet="Position">
+          <ScalarProperty Name="IdPosition" ColumnName="IdPosition" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="Iwaschenko_PalaceModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+          <ScalarProperty Name="Tittle" ColumnName="Tittle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Iwaschenko_PalaceModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+          <ScalarProperty Name="Education" ColumnName="Education" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Volunteers">
+      <EntityTypeMapping TypeName="Iwaschenko_PalaceModel.Volunteer">
+        <MappingFragment StoreEntitySet="Volunteer">
+          <ScalarProperty Name="IdVolunteer" ColumnName="IdVolunteer" />
+          <ScalarProperty Name="IdMovement" ColumnName="IdMovement" />
+          <ScalarProperty Name="IdParticipation" ColumnName="IdParticipation" />
+          <ScalarProperty Name="IdUsers" ColumnName="IdUsers" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workers">
+      <EntityTypeMapping TypeName="Iwaschenko_PalaceModel.Worker">
+        <MappingFragment StoreEntitySet="Worker">
+          <ScalarProperty Name="IdWorkers" ColumnName="IdWorkers" />
+          <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />
+          <ScalarProperty Name="IdPosition" ColumnName="IdPosition" />
+          <ScalarProperty Name="IdMovemente" ColumnName="IdMovemente" />
+          <ScalarProperty Name="IdUsers" ColumnName="IdUsers" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
