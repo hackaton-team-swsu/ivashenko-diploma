@@ -148,8 +148,14 @@
     <Compile Include="Pages\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\VolunteerCabinetPage.xaml.cs">
+      <DependentUpon>VolunteerCabinetPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\VolunteerPage.xaml.cs">
       <DependentUpon>VolunteerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WorkerCabinetPage.xaml.cs">
+      <DependentUpon>WorkerCabinetPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\WorkerPage.xaml.cs">
       <DependentUpon>WorkerPage.xaml</DependentUpon>
@@ -203,9 +209,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\VolunteerCabinetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\VolunteerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\WorkerCabinetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\WorkerPage.xaml">
       <Generator>MSBuild:Compile</Generator>

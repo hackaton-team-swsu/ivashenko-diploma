@@ -8,12 +8,6 @@ namespace Iwaschenko_Palace.Entities
 {
     public partial class User
     {
-        public string CurrentUser
-        {
-            get
-            {
-                return "!!!";
-            }
-        }
+        
     }
 }

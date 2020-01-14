@@ -38,11 +38,11 @@ namespace Iwaschenko_Palace.Pages
 
             try
             {
-                if(String.IsNullOrEmpty(TBoxLogin.Text) || String.IsNullOrEmpty(PBoxPassword.Text))
+                if(String.IsNullOrEmpty(TBoxLogin.Text) || String.IsNullOrEmpty(PBoxPassword.Password))
                 {
                     MessageBox.Show("Пароль введи э", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     TBoxLogin.Text = "";
-                    PBoxPassword.Text = "";
+                    PBoxPassword.Password = "";
                     return;
                 }
 
@@ -54,23 +54,42 @@ namespace Iwaschenko_Palace.Pages
                 {
                     MessageBox.Show("Пользователя с таким логином не существует", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     TBoxLogin.Text = "";
-                    PBoxPassword.Text = "";
+                    PBoxPassword.Password = "";
                     return;
                 }
 
-                var tempUser = allUsers
-                    .Where(u => u.Login == tempUserLogin && u.Password == PBoxPassword.Text)
-                    .FirstOrDefault();
+                var tempUser = (from currUser in allUsers
+                                join r in AppData.Context.Roles on currUser.IdRole equals r.IdRole 
+                                where currUser.Login == tempUserLogin && currUser.Password == PBoxPassword.Password
+                                select new { Id = currUser.IdUser, Login = currUser.Login, Password = currUser.Password, Role = currUser.Role.Tittle})
+                            .FirstOrDefault();
                 
                 if(tempUser == null)
                 {
                     MessageBox.Show("Неверный пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     TBoxLogin.Text = "";
-                    PBoxPassword.Text = "";
+                    PBoxPassword.Password = "";
                     return;
                 }
 
-                AppData.MainFrame.Navigate(new Pages.AdminPages.AdminMenu());
+                AppData.LoggedUserId = tempUser.Id;
+
+                switch (tempUser.Role)
+                {
+                    case "Админ":
+                        AppData.MainFrame.Navigate(new Pages.AdminPages.AdminMenu());
+                        break;
+                    case "Сотрудник":
+                        AppData.MainFrame.Navigate(new Pages.VolunteerCabinetPage());
+                        break;
+                    case "Волонтер":
+                        AppData.MainFrame.Navigate(new Pages.WorkerCabinetPage());
+                        break;
+                    default:
+                        MessageBox.Show("Пользователь не состоит в корректной роли, обратитесь к администратору", "Ошибка", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                        return;
+                }
+                
             }
             catch(Exception ex)
             {

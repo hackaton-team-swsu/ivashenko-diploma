@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Ilya.Agarkov\Desktop\диплом\Iwaschenko_Palace\Iwaschenko_Palace\obj\Debug\
+C:\Users\ILYUHA-PC\Desktop\ivashenko-diploma\diploma\Iwaschenko_Palace\Iwaschenko_Palace\obj\Debug\
 Iwaschenko_Palace
 none
 false
 DEBUG;TRACE
-C:\Users\Ilya.Agarkov\Desktop\диплом\Iwaschenko_Palace\Iwaschenko_Palace\App.xaml
-11-1249264100
+C:\Users\ILYUHA-PC\Desktop\ivashenko-diploma\diploma\Iwaschenko_Palace\Iwaschenko_Palace\App.xaml
+13-1468849218
 2-2120865905
-33-1538255511
-18-638990054
-MainWindow.xaml;Pages\AdminPages\AdminMenu.xaml;Pages\AuthorizationPage.xaml;Pages\EducationPage.xaml;Pages\EventPages.xaml;Pages\MovementePage.xaml;Pages\PageParticipant.xaml;Pages\UserPage.xaml;Pages\VolunteerPage.xaml;Pages\WorkerPage.xaml;Windows\AddUser.xaml;
+35-878642319
+18609997963
+MainWindow.xaml;Pages\AdminPages\AdminMenu.xaml;Pages\AuthorizationPage.xaml;Pages\EducationPage.xaml;Pages\EventPages.xaml;Pages\MovementePage.xaml;Pages\PageParticipant.xaml;Pages\UserPage.xaml;Pages\VolunteerCabinetPage.xaml;Pages\VolunteerPage.xaml;Pages\WorkerCabinetPage.xaml;Pages\WorkerPage.xaml;Windows\AddUser.xaml;
 
-False
+True
 

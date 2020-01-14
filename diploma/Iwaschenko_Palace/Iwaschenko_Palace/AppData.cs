@@ -13,5 +13,7 @@ namespace Iwaschenko_Palace
         public static Frame MainFrame;
 
         public static Entities.Iwaschenko_PalaceEntities1 Context = new Iwaschenko_PalaceEntities1();
+
+        public static int LoggedUserId = -1;
     }
 }
